@@ -112,8 +112,8 @@ const getGhostMovementVector = (ghost: Ghost): Vector => {
   return velocity;
 };
 
-export const SPEED_FACTOR_HIGH = 2;
-export const SPEED_FACTOR_NORMAL = 1;
+export const SPEED_FACTOR_HIGH = 4;
+export const SPEED_FACTOR_NORMAL = 2;
 export const SPEED_FACTOR_SLOW = 0.5;
 
 const getNewSpeedFactor = (ghost: Ghost): number => {

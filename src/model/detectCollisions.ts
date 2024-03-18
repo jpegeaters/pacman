@@ -10,6 +10,8 @@ import { Game } from './Game';
 import { Ghost } from './Ghost';
 import { BASIC_PILL_ID, EMPTY_TILE_ID, ENERGIZER_ID, TileId } from './MazeData';
 import { Rectangle } from './Rectangle';
+import EatPillSound from '../resources/sfx/pacman_eat.wav';
+import { getSoundPlay } from './getSoundPlay';
 
 const PILL_BOX_HIT_BOX_WIDTH = 2;
 const PILL_BOX_HIT_BOX_HEIGHT = 2;
@@ -88,6 +90,7 @@ const eatPillLayerObject = (tile: TileCoordinates, game: Game) => {
 
 const eatPill = (tile: TileCoordinates, game: Game) => {
   game.score += BASIC_PILL_POINTS;
+  getSoundPlay(EatPillSound, game, 0.3);
 };
 
 const detectGhostCollisions = (game: Game) => {

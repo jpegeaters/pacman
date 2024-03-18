@@ -22,6 +22,8 @@ import {
 import { StateValue } from 'xstate';
 import { TimeoutTimer } from './TimeoutTimer';
 import { getStatePhaseLength } from './updateGhostStatePhase';
+import GhostDeadSound from '../resources/sfx/ghost_dead.mp3';
+import { getSoundPlay } from './getSoundPlay';
 
 export type GhostNumber = 0 | 1 | 2 | 3;
 export const GhostNumbers: GhostNumber[] = [0, 1, 2, 3];
@@ -31,7 +33,7 @@ export type FrightenedGhostTime = 0 | 1;
 export const FrightenedGhostTimes: FrightenedGhostTime[] = [0, 1];
 
 const FRIGHTENED_ABOUT_TO_END_DURATION: MilliSeconds = 3000;
-const DEAD_WAITING_IN_BOX_DURATION: MilliSeconds = 3000;
+const DEAD_WAITING_IN_BOX_DURATION: MilliSeconds = 7000;
 
 export const KILL_GHOST_SCORE = [0, 100, 200, 400, 800, 1600, 3200];
 
@@ -63,6 +65,7 @@ export class Ghost {
     this.game.killedGhosts++;
     this.game.score += KILL_GHOST_SCORE[this.game.killedGhosts];
     this.deadWaitingTimeInBoxLeft = DEAD_WAITING_IN_BOX_DURATION;
+    getSoundPlay(GhostDeadSound, this.game);
   }
 
   @action.bound

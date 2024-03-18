@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "private",
+  "homepage": "https://oksana-nevirkovets.github.io/pacman-react",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
@@ -16,6 +17,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "antd": "4.10.3",
     "classnames": "^2.2.6",
+    "gh-pages": "^6.1.1",
     "lodash": "^4.17.15",
     "mobx": "^5.15.1",
     "mobx-react-lite": "2.0.6",
@@ -30,14 +32,15 @@
   "scripts": {
     "compile": "tsc --noEmit",
     "compile:watch": "tsc --noEmit --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:ci": "CI=true react-scripts test",
     "eject": "react-scripts eject",
     "prettier": "prettier --write **/*.{ts,tsx,md,json,js,sx}",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "netlify-build": "tsc --noEmit && yarn lint && yarn test:ci && yarn build"
+    "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,10 +61,5 @@
     "@types/styled-components": "^5.0.1",
     "husky": "^3.1.0",
     "prettier": "^1.19.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "yarn compile && yarn lint && yarn test:ci"
-    }
   }
 }

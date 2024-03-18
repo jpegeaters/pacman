@@ -14,6 +14,7 @@ export const getPacManDyingPhase = (pacMan: PacMan): PacManDyingPhase => {
   let dyingPhase: number = Math.floor(
     pacMan.timeSinceDeath / PacManDyingPhaseLength
   );
+
   if (dyingPhase >= PacManDyingPhaseCount) {
     dyingPhase = PacManDyingPhaseCount - 1;
   }

@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react-lite';
-import React from 'react';
 import { useGame } from '../../../components/StoreContext';
 import './Score.css';
 import classNames from 'classnames';

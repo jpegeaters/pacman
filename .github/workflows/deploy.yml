@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 16.13.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16.13.2'
+
+      - name: Set up Git
+        run: |
+          git config --local user.email "jpegeaters@gmail.com"
+          git config --local user.name "jpegeaters"
+
+      - name: Create gh-pages branch
+        run: |
+          git checkout -b gh-pages
+          git push origin gh-pages
+
+      - name: Install dependencies and deploy
+        run: |
+          yarn install
+          yarn deploy
+
+      - name: Delete gh-pages branch
+        run: |
+          git checkout master
+          git branch -D gh-pages
+          git push origin --delete gh-pages

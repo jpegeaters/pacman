@@ -16,7 +16,8 @@ import {
 } from './PacManStateChart';
 import { Game } from './Game';
 import { StateValue } from 'xstate';
-
+import dieSound from '../resources/sfx/die.mp3';
+import { getSoundPlay } from './getSoundPlay';
 export class PacMan {
   constructor(game: Game) {
     this.game = game;
@@ -51,6 +52,7 @@ export class PacMan {
   @action.bound
   onDead() {
     this.diedAtTimestamp = this.game.timestamp;
+    getSoundPlay(dieSound, this.game);
   }
 
   @computed

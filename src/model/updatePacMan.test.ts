@@ -1,6 +1,6 @@
 import { screenFromTile } from './Coordinates';
 import { BASIC_PILL_POINTS, ghostCollidesWithPacMan } from './detectCollisions';
-import { Game, DEFAULT_SPEED } from './Game';
+import { Game } from './Game';
 import { Ghost } from './Ghost';
 import { BASIC_PILL_ID, EMPTY_TILE_ID } from './MazeData';
 import { simulateFrames, simulateFrame, simulateTime } from './simulateFrames';
@@ -12,7 +12,11 @@ import {
   getPacManDyingPhase,
 } from './pacManDyingPhase';
 
+const DEFAULT_SPEED = 2;
 describe('updatePacMan()', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
   it('advances PacMans position', () => {
     // Arrange
     const store = new Store();

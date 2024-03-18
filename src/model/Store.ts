@@ -8,9 +8,21 @@ export class Store {
 
   debugState = new DebugState(this);
 
+  level = 1;
+
   @action.bound
   resetGame() {
     this.game = new Game(this);
     this.game.readyGameForPlay();
+    this.game.gameStarted = true;
+    this.setGameLevel();
+  }
+  @action.bound
+  muteSounds() {
+    this.game.muteGame();
+  }
+  @action.bound
+  setGameLevel() {
+    this.game.speed = this.level;
   }
 }

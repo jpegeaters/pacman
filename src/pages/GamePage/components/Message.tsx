@@ -9,7 +9,7 @@ export const Message = observer<{ className?: string; text: string }>(
 );
 
 const MessageStyled = styled.span`
-  font-family: Joystix;
+  font-family: BoldPixel;
   font-size: 24px;
   color: yellow;
   position: absolute;
@@ -17,4 +17,5 @@ const MessageStyled = styled.span`
   top: 332px;
   width: 220px;
   text-align: center;
+  padding-top: 5px;
 `;
